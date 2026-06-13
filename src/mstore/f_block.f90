@@ -70,6 +70,7 @@ subroutine get_f_block_records(records)
       new_record('LrH6', LrH6), &
       new_record('La2', La2), &
       new_record('Ce2', Ce2), &
+      new_record('CePr', CePr), &
       new_record('Pr2', Pr2), &
       new_record('Gd2', Gd2), &
       new_record('U2', U2), &
@@ -718,6 +719,19 @@ subroutine Ce2(self)
       & shape(xyz))
    call new(self, sym, xyz)
 end subroutine Ce2
+
+subroutine CePr(self)
+   type(structure_type), intent(out) :: self
+   integer, parameter :: nat = 2
+   character(len=*), parameter :: sym(nat) = [character(len=4)::&
+      & "Ce", "Pr"]
+   real(wp), parameter :: xyz(3, nat) = reshape([&
+      &  0.00000000000000_wp,  0.00000000000000_wp, -2.51350575170427_wp, &
+      &  0.00000000000000_wp,  0.00000000000000_wp,  2.51350575170427_wp],&
+      & shape(xyz))
+   integer, parameter :: uhf = 3
+   call new(self, sym, xyz)
+end subroutine CePr
 
 subroutine Pr2(self)
    type(structure_type), intent(out) :: self
