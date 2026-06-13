@@ -30,7 +30,9 @@ subroutine get_f_block_records(records)
    records = [ &
       new_record('LaCl3', LaCl3), &
       new_record('CeCl3', CeCl3), &
+      new_record('CeClH2', CeClH2), &
       new_record('CeF3', CeF3), &
+      new_record('CeFH2', CeFH2), &
       new_record('CeH4', CeH4), &
       new_record('PrCl3', PrCl3), &
       new_record('PmCl3', PmCl6), &
@@ -108,6 +110,21 @@ subroutine CeCl3(self)
    call new(self, sym, xyz, uhf=uhf)
 end subroutine CeCl3
 
+subroutine CeClH2(self)
+   type(structure_type), intent(out) :: self
+   integer, parameter :: nat = 4
+   character(len=*), parameter :: sym(nat) = [character(len=4)::&
+      & "Ce", "Cl", "H", "H"]
+   real(wp), parameter :: xyz(3, nat) = reshape([&
+      &  0.34430551989507_wp,  0.48589111642113_wp, -0.63159177689118_wp, &
+      & -1.92346360186845_wp, -2.77880494449514_wp, -3.34258959032595_wp, &
+      & -1.37549021809236_wp,  3.84051527703012_wp,  0.62399365816101_wp, &
+      &  4.08185103614380_wp,  0.00554555561254_wp,  0.63540715841876_wp], &
+      & shape(xyz))
+   integer, parameter :: uhf = 1
+   call new(self, sym, xyz, uhf=uhf)
+end subroutine CeClH2
+
 subroutine CeF3(self)
    type(structure_type), intent(out) :: self
    integer, parameter :: nat = 4
@@ -122,6 +139,21 @@ subroutine CeF3(self)
    integer, parameter :: uhf = 1
    call new(self, sym, xyz, uhf=uhf)
 end subroutine CeF3
+
+subroutine CeFH2(self)
+   type(structure_type), intent(out) :: self
+   integer, parameter :: nat = 4
+   character(len=*), parameter :: sym(nat) = [character(len=4)::&
+      & "Ce", "F", "H", "H"]
+   real(wp), parameter :: xyz(3, nat) = reshape([&
+      &  0.31341148423089_wp,  0.43560267965472_wp, -0.60428852389396_wp, &
+      & -1.49105188001756_wp, -2.15235215616270_wp, -2.83632833381967_wp, &
+      & -1.78949221363931_wp,  3.69986435961838_wp,  0.35535720766027_wp, &
+      &  4.09433534550403_wp, -0.42996787854179_wp,  0.37047909941599_wp], &
+      & shape(xyz))
+   integer, parameter :: uhf = 1
+   call new(self, sym, xyz, uhf=uhf)
+end subroutine CeFH2
 
 subroutine CeH4(self)
    type(structure_type), intent(out) :: self
