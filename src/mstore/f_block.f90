@@ -35,6 +35,7 @@ subroutine get_f_block_records(records)
       new_record('CeFH2', CeFH2), &
       new_record('CeH4', CeH4), &
       new_record('PrCl3', PrCl3), &
+      new_record('NdClH2', NdClH2), &
       new_record('PmCl3', PmCl6), &
       new_record('SmCl3', SmCl3), &
       new_record('EuCl5', EuCl5), &
@@ -185,6 +186,21 @@ subroutine PrCl3(self)
    integer, parameter :: uhf = 2
    call new(self, sym, xyz, uhf=uhf)
 end subroutine PrCl3
+
+subroutine NdClH2(self)
+   type(structure_type), intent(out) :: self
+   integer, parameter :: nat = 4
+   character(len=*), parameter :: sym(nat) = [character(len=4)::&
+      & "Nd", "Cl", "H", "H"]
+   real(wp), parameter :: xyz(3, nat) = reshape([&
+      &  0.32811528108045_wp,  0.46209501419179_wp, -0.63182224217952_wp, &
+      & -1.93954972897673_wp, -2.80453922595282_wp, -3.36985481167178_wp, &
+      & -1.23933935586842_wp,  3.78267292232738_wp,  0.63895478754289_wp, &
+      &  3.97797653984277_wp,  0.11291829400230_wp,  0.64794171567104_wp], &
+      & shape(xyz))
+   integer, parameter :: uhf = 3
+   call new(self, sym, xyz, uhf=uhf)
+end subroutine NdClH2
 
 subroutine PmCl6(self)
    type(structure_type), intent(out) :: self
